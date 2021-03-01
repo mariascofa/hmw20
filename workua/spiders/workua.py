@@ -29,8 +29,6 @@ class WorkuaSpider(scrapy.Spider):
 
             detail = person.css("div.row div a::attr(href)").get()
             detail_page_url = self.site + detail
-            # print (detail_page_url)
-            # yield people
             yield Request(detail_page_url, self.parse_detail, meta={"people": people})
 
         new_page_url = response.css("ul.pagination-small > li a::attr(href)").getall()
