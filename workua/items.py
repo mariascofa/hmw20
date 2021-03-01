@@ -11,3 +11,4 @@ class PeopleItem(scrapy.Item):
     age = scrapy.Field()
     position = scrapy.Field()
     detail = scrapy.Field()
+    
