@@ -27,12 +27,11 @@ class WorkuaSpider(scrapy.Spider):
                 people["age"] = age_updated
             people["position"] = position
 
-
             detail = person.css("div.row div a::attr(href)").get()
             detail_page_url = self.site + detail
             # print (detail_page_url)
             # yield people
-            yield Request(detail_page_url, self.parse_detail, meta={"people":people})
+            yield Request(detail_page_url, self.parse_detail, meta={"people": people})
 
         new_page_url = response.css("ul.pagination-small > li a::attr(href)").getall()
         if new_page_url:
@@ -44,9 +43,5 @@ class WorkuaSpider(scrapy.Spider):
 
         people = response.meta["people"]
         if detail:
-         people["detail"] = detail
+            people["detail"] = detail
         yield people
-
-
-
-
